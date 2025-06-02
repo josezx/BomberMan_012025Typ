@@ -34,7 +34,7 @@ ABloqueFuego::ABloqueFuego()
 	if (ParticleAsset.Succeeded())
 	{
 		ParticleSystem->SetTemplate(ParticleAsset.Object);
-		ParticleSystem->SetWorldScale3D(FVector(3.0f));
+		ParticleSystem->SetWorldScale3D(FVector(1.0f));
 	}
 
 	// Movimiento aleatorio de rotación
@@ -45,29 +45,41 @@ ABloqueFuego::ABloqueFuego()
 void ABloqueFuego::BeginPlay()
 {
 	Super::BeginPlay();
-
+/*
 	FVector Pos = GetActorLocation();
 	Pos.Z += 940.f;
 	SetActorLocation(Pos);
+	*/
 	PosicionInicial = GetActorLocation();
 }
 
 void ABloqueFuego::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	/*
 	// Rotación
 	FRotator DeltaRotation = FRotator::ZeroRotator;
 	DeltaRotation += FQuat(RotationAxis, FMath::DegreesToRadians(RotationSpeed * DeltaTime)).Rotator();
 	AddActorLocalRotation(DeltaRotation);
+	*/
 }
 AActor* ABloqueFuego::Clonar(UWorld* Mundo, const FVector& Posicion) const
 {
 	if (!Mundo) return nullptr;
-
+	// ajusta la posición si hay colisión, pero que siempre lo spawnee.
 	FActorSpawnParameters SpawnParams;
 	ABloqueFuego* Nuevo = Mundo->SpawnActor<ABloqueFuego>(GetClass(), Posicion, GetActorRotation(), SpawnParams);
+	if (Nuevo)
+	{
+		//copia manual del bloque original al nuevo
+		Nuevo->SetActorScale3D(GetActorScale3D());
+		Nuevo->SetActorHiddenInGame(IsHidden());
 
+		// Propiedades específicas de esta clase
+		Nuevo->DanioPorFuego = this->DanioPorFuego;
+		Nuevo->ColorFuego = this->ColorFuego;
+		Nuevo->VelocidadParticulas = this->VelocidadParticulas;
+	}
 
 	return Nuevo;
 }

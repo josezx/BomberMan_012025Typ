@@ -36,14 +36,14 @@ ABloqueExplosivo::ABloqueExplosivo()
 	if (PreviewAsset.Succeeded())
 	{
 		ExplosionPreview->SetTemplate(PreviewAsset.Object);
-		ExplosionPreview->SetWorldScale3D(FVector(1.5f));
+		ExplosionPreview->SetWorldScale3D(FVector(0.5f));
 	}
 
 	static ConstructorHelpers::FObjectFinder<UParticleSystem> ExplosionAsset(TEXT("/Game/StarterContent/Particles/P_Explosion.P_Explosion"));
 	if (ExplosionAsset.Succeeded())
 	{
 		ExplosionFinal = ExplosionAsset.Object;
-		ExplosionPreview->SetWorldScale3D(FVector(3.0f));
+		ExplosionPreview->SetWorldScale3D(FVector(1.0f));
 	}
 }
 
@@ -58,7 +58,7 @@ void ABloqueExplosivo::Tick(float DeltaTime)
 
 	TiempoAcumulado += DeltaTime;
 
-	float Intensidad = (FMath::Sin(TiempoAcumulado * FrecuenciaRespiracion) + 1.0f) * 0.5f;
+	float Intensidad = (FMath::Sin(TiempoAcumulado * FrecuenciaRespiracion) + 25.0f) * 0.5f;
 	float Aleatorio = FMath::FRandRange(0.98f, 1.02f);
 	float Escala = (1.0f + Intensidad * AmplitudRespiracion) * Aleatorio;
 

@@ -61,6 +61,7 @@ void ABloqueElectricidad::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	TiempoAcumulado += DeltaTime;
+	/*
 	if (TiempoAcumulado >= TiempoParaCambiar)
 	{
 		AmplitudActual = FMath::RandRange(-80.f, 80.f);
@@ -77,7 +78,9 @@ void ABloqueElectricidad::Tick(float DeltaTime)
 	FVector NuevaPos = PosicionInicial;
 	NuevaPos.X += Desplazamiento;
 	SetActorLocation(NuevaPos);
+*/
 }
+
 AActor* ABloqueElectricidad::Clonar(UWorld* Mundo, const FVector& Posicion) const
 {
 	if (!Mundo) return nullptr;

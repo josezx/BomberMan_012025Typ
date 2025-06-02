@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -30,4 +30,13 @@ private:
 public:
 	virtual AActor* Clonar(UWorld* Mundo, const FVector& Posicion) const override;
 	float TiempoMovimiento;
+	// ✅ Añade aquí las propiedades que estás tratando de clonar
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fuego")
+	float DanioPorFuego;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fuego")
+	FLinearColor ColorFuego;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fuego")
+	float VelocidadParticulas;
 };

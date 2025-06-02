@@ -20,19 +20,22 @@ public:
 	//Para bloque
 	UPROPERTY()
 	TArray<ABloque*> BloquesA; // Guarda todos los bloques generados
-	TArray<TArray<int32>> MapaLaberinto;
-	void GenerarMapaDesdeCodigo();
+	TArray<TArray<int>> MapaLaberinto;
+	void ObtenerMapa();
 	int32 TColumnas;
 	int32 TFilas;
 
 
-	void GenerarLaberinto();
+	void ObtenerLaberinto();
+
+	void InicializarPrototype();
 
 	//FabricaBloques* GenerarBloques();
 
 	//Para clonar bloques
-	void ClonarBloques(int32 InTFilas, int32 InTColumnas);
-
+	void ClonarBloques(int InTFilas, int InTColumnas);
+	UPROPERTY()
+	TMap<int, AActor*> MapaPrototipos;
 	//void ClonarMitadDerechaAHaciaIzquierda();
 	//ABloque* BuscarBloqueEnPosicion(FVector Posicion);
 	float TamanoCelda = 200.0f;

@@ -31,7 +31,7 @@ ABloqueTrampolin::ABloqueTrampolin()
 	if (ParticleAsset.Succeeded())
 	{
 		ParticleSystem->SetTemplate(ParticleAsset.Object);
-		ParticleSystem->SetWorldScale3D(FVector(2.0f));
+		ParticleSystem->SetWorldScale3D(FVector(1.0f));
 	}
 
 	TiempoAcumulado = 0.f;

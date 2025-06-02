@@ -34,7 +34,7 @@ ABloqueHielo::ABloqueHielo()
 	if (ParticleAsset.Succeeded())
 	{
 		ParticleSystem->SetTemplate(ParticleAsset.Object);
-		ParticleSystem->SetWorldScale3D(FVector(2.0f, 2.0f, 1.0f));
+		ParticleSystem->SetWorldScale3D(FVector(0.5f, 0.5f, 0.5f));
 		ParticleSystem->SetRelativeRotation(FRotator(90.f, 0.f, 0.f));
 		ParticleSystem->SetRelativeLocation(FVector(0.f, 0.f, -30.f));
 	}
@@ -55,16 +55,15 @@ void ABloqueHielo::BeginPlay()
 void ABloqueHielo::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	/*
 	// Rotación suave
 	FRotator DeltaRotation = FQuat(RotationAxis, FMath::DegreesToRadians(RotationSpeed * DeltaTime)).Rotator();
 	AddActorLocalRotation(DeltaRotation);
-
-	// Flotación vertical
-	float OffsetZ = FMath::Abs(FMath::Sin(GetWorld()->GetTimeSeconds() * 2.f)) * 150.f;
-	FVector NuevaPos = PosicionInicial + FVector(0.f, 0.f, OffsetZ);
 	SetActorLocation(NuevaPos);
-
+	*/
+	//Flotación vertical
+	float OffsetZ = FMath::Abs(FMath::Sin(GetWorld()->GetTimeSeconds() * 25.f)) * 150.f;
+	FVector NuevaPos = PosicionInicial + FVector(0.f, 0.f, OffsetZ);
 }
 AActor* ABloqueHielo::Clonar(UWorld* Mundo, const FVector& Posicion) const
 {

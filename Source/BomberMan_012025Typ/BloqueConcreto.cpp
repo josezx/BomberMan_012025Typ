@@ -33,7 +33,7 @@ ABloqueConcreto::ABloqueConcreto()
 		ParticleSystem->SetTemplate(ParticleSystemAsset.Object);
 
 		// Escalar el sistema de partículas para que sea más grande
-		ParticleSystem->SetWorldScale3D(FVector(1.0f, 1.0f, 1.5f));
+		ParticleSystem->SetWorldScale3D(FVector(0.5f, 0.5f, 0.5f));
 	}
 
 	bPuedeGirar = true; // Se asignará desde el GameMode
@@ -49,14 +49,14 @@ void ABloqueConcreto::BeginPlay()
 void ABloqueConcreto::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	/*
 	if (bPuedeGirar)
 	{
 		FRotator NewRotation = GetActorRotation();
 		NewRotation.Yaw += RotationSpeed * DeltaTime;
 		SetActorRotation(NewRotation);
 	}
-
+	*/
 }
 AActor* ABloqueConcreto::Clonar(UWorld* Mundo, const FVector& Posicion) const
 {
