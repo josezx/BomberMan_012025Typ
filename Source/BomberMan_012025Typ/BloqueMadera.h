@@ -30,8 +30,8 @@ public:
 	float VelocidadMovimiento;
 	float DistanciaApertura; // Distancia máxima al abrir
 	FVector PosicionInicial; // Posición inicia	
+
 	// Implementación del patrón Prototype
 	virtual AActor* Clonar(UWorld* Mundo, const FVector& Posicion) const override;
 	float TiempoMovimiento;
-	//FVector PosicionInicial;
 };

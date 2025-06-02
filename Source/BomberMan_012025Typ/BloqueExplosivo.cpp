@@ -75,3 +75,19 @@ void ABloqueExplosivo::EjecutarExplosion()
 
 	Destroy();
 }
+AActor* ABloqueExplosivo::Clonar(UWorld* Mundo, const FVector& Posicion) const
+{
+	if (!Mundo) return nullptr;
+
+	FActorSpawnParameters SpawnParams;
+	ABloqueExplosivo* Nuevo = Mundo->SpawnActor<ABloqueExplosivo>(GetClass(), Posicion, GetActorRotation(), SpawnParams);
+
+
+	if (Nuevo)
+	{
+		Nuevo->TiempoMovimiento = this->TiempoMovimiento;
+		// puedes copiar más propiedades si necesitas
+	}
+
+	return Nuevo;
+}

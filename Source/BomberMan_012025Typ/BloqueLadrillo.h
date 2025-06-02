@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Bloque.h"
+#include "IPrototypeBloques.h"
 #include "BloqueLadrillo.generated.h"
-
 /**
  * 
  */
 UCLASS()
-class BOMBERMAN_012025TYP_API ABloqueLadrillo : public ABloque
+class BOMBERMAN_012025TYP_API ABloqueLadrillo : public ABloque, public IIPrototypeBloques
 {
 	GENERATED_BODY()
 public:
@@ -28,4 +28,8 @@ public:
 	float velocidad;
 	float amplitud;
 	float PosicionInicial;
+
+
+	virtual AActor* Clonar(UWorld* Mundo, const FVector& Posicion) const override;
+	float TiempoMovimiento;
 };

@@ -69,3 +69,12 @@ void ABloqueTrampolin::Tick(float DeltaTime)
 		bParticulaActiva = false;
 	}
 }
+AActor* ABloqueTrampolin::Clonar(UWorld* Mundo, const FVector& Posicion) const
+{
+	if (!Mundo) return nullptr;
+
+	FActorSpawnParameters SpawnParams;
+	ABloqueTrampolin* Nuevo = Mundo->SpawnActor<ABloqueTrampolin>(GetClass(), Posicion, GetActorRotation(), SpawnParams);
+
+	return Nuevo;
+}

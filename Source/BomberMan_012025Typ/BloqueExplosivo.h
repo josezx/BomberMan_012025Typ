@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Bloque.h"
+#include "IPrototypeBloques.h"
 #include "BloqueExplosivo.generated.h"
-
 /**
  * 
  */
 UCLASS()
-class BOMBERMAN_012025TYP_API ABloqueExplosivo : public ABloque
+class BOMBERMAN_012025TYP_API ABloqueExplosivo : public ABloque, public IIPrototypeBloques
 {
 	GENERATED_BODY()
 public:
@@ -34,5 +34,7 @@ private:
 	float DanioDeExplosion = 100.f;
 
 	void EjecutarExplosion();
-
+public:
+	virtual AActor* Clonar(UWorld* Mundo, const FVector& Posicion) const override;
+	float TiempoMovimiento;
 };

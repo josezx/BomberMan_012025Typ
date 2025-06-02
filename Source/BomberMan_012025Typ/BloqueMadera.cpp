@@ -72,20 +72,12 @@ void ABloqueMadera::Tick(float DeltaTime)
 		SetActorLocation(NuevaPosicion);
 	}
 }
-
 AActor* ABloqueMadera::Clonar(UWorld* Mundo, const FVector& Posicion) const
 {
 	if (!Mundo) return nullptr;
 
 	FActorSpawnParameters SpawnParams;
 	ABloqueMadera* Nuevo = Mundo->SpawnActor<ABloqueMadera>(GetClass(), Posicion, GetActorRotation(), SpawnParams);
-
-	// Copiar estado relevante
-	if (Nuevo)
-	{
-		Nuevo->TiempoMovimiento = this->TiempoMovimiento;
-		// puedes copiar más propiedades si necesitas
-	}
 
 	return Nuevo;
 }

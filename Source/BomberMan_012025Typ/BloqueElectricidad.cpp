@@ -78,3 +78,12 @@ void ABloqueElectricidad::Tick(float DeltaTime)
 	NuevaPos.X += Desplazamiento;
 	SetActorLocation(NuevaPos);
 }
+AActor* ABloqueElectricidad::Clonar(UWorld* Mundo, const FVector& Posicion) const
+{
+	if (!Mundo) return nullptr;
+
+	FActorSpawnParameters SpawnParams;
+	ABloqueElectricidad* Nuevo = Mundo->SpawnActor<ABloqueElectricidad>(GetClass(), Posicion, GetActorRotation(), SpawnParams);
+
+	return Nuevo;
+}

@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Bloque.h"
+#include "IPrototypeBloques.h"
 #include "BloqueFuego.generated.h"
-
 /**
  * 
  */
 UCLASS()
-class BOMBERMAN_012025TYP_API ABloqueFuego : public ABloque
+class BOMBERMAN_012025TYP_API ABloqueFuego : public ABloque, public IIPrototypeBloques
 {
 	GENERATED_BODY()
 public:
@@ -27,4 +27,7 @@ private:
 	float RotationSpeed;
 	FVector RotationAxis;
 	FVector PosicionInicial;
+public:
+	virtual AActor* Clonar(UWorld* Mundo, const FVector& Posicion) const override;
+	float TiempoMovimiento;
 };

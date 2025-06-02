@@ -20,7 +20,8 @@ private: \
 	friend struct Z_Construct_UClass_ABloqueAcero_Statics; \
 public: \
 	DECLARE_CLASS(ABloqueAcero, ABloque, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/BomberMan_012025Typ"), NO_API) \
-	DECLARE_SERIALIZER(ABloqueAcero)
+	DECLARE_SERIALIZER(ABloqueAcero) \
+	virtual UObject* _getUObject() const override { return const_cast<ABloqueAcero*>(this); }
 
 
 #define FID_BomberMan_012025Typ_Source_BomberMan_012025Typ_BloqueAcero_h_15_ENHANCED_CONSTRUCTORS \

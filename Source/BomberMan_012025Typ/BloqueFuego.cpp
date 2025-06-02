@@ -60,9 +60,14 @@ void ABloqueFuego::Tick(float DeltaTime)
 	FRotator DeltaRotation = FRotator::ZeroRotator;
 	DeltaRotation += FQuat(RotationAxis, FMath::DegreesToRadians(RotationSpeed * DeltaTime)).Rotator();
 	AddActorLocalRotation(DeltaRotation);
+}
+AActor* ABloqueFuego::Clonar(UWorld* Mundo, const FVector& Posicion) const
+{
+	if (!Mundo) return nullptr;
 
-	// Flotación vertical
-	float OffsetZ = FMath::Abs(FMath::Sin(GetWorld()->GetTimeSeconds() * 2.f)) * 150.f;
-	FVector NuevaPos = PosicionInicial + FVector(0.f, 0.f, OffsetZ);
-	SetActorLocation(NuevaPos);
+	FActorSpawnParameters SpawnParams;
+	ABloqueFuego* Nuevo = Mundo->SpawnActor<ABloqueFuego>(GetClass(), Posicion, GetActorRotation(), SpawnParams);
+
+
+	return Nuevo;
 }

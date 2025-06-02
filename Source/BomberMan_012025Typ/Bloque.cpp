@@ -16,7 +16,7 @@ ABloque::ABloque()
 	MeshBloque->SetupAttachment(RootComponent);
 	RootComponent = MeshBloque;
 	// Establecer el tamaño inicial del bloque
-	AjustarTamano(FVector(1.0f, 1.0f, 1.0f));
+	AjustarTamano(FVector(10.0f, 10.0f, 10.0f));
 }
 
 // Called when the game starts or when spawned

@@ -64,4 +64,21 @@ void ABloqueHielo::Tick(float DeltaTime)
 	float OffsetZ = FMath::Abs(FMath::Sin(GetWorld()->GetTimeSeconds() * 2.f)) * 150.f;
 	FVector NuevaPos = PosicionInicial + FVector(0.f, 0.f, OffsetZ);
 	SetActorLocation(NuevaPos);
+
+}
+AActor* ABloqueHielo::Clonar(UWorld* Mundo, const FVector& Posicion) const
+{
+	if (!Mundo) return nullptr;
+
+	FActorSpawnParameters SpawnParams;
+	ABloqueHielo* Nuevo = Mundo->SpawnActor<ABloqueHielo>(GetClass(), Posicion, GetActorRotation(), SpawnParams);
+
+
+	if (Nuevo)
+	{
+		Nuevo->TiempoMovimiento = this->TiempoMovimiento;
+		// puedes copiar más propiedades si necesitas
+	}
+
+	return Nuevo;
 }

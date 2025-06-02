@@ -56,4 +56,14 @@ void ABloqueAcero::Tick(float DeltaTime)
 	*/
 }
 
+AActor* ABloqueAcero::Clonar(UWorld* Mundo, const FVector& Posicion) const
+{
+	if (!Mundo) return nullptr;
+
+	FActorSpawnParameters SpawnParams;
+	ABloqueAcero* Nuevo = Mundo->SpawnActor<ABloqueAcero>(GetClass(), Posicion, GetActorRotation(), SpawnParams);
+
+	return Nuevo;
+}
+
 
