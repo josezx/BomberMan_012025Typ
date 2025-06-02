@@ -42,6 +42,7 @@ ABloqueHielo::ABloqueHielo()
 	// Movimiento visual aleatorio
 	RotationSpeed = FMath::RandRange(30.f, 90.f);
 	RotationAxis = FVector(FMath::FRand(), FMath::FRand(), FMath::FRand()).GetSafeNormal();
+	
 }
 
 void ABloqueHielo::BeginPlay()
@@ -55,15 +56,15 @@ void ABloqueHielo::BeginPlay()
 void ABloqueHielo::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	/*
+
 	// Rotación suave
 	FRotator DeltaRotation = FQuat(RotationAxis, FMath::DegreesToRadians(RotationSpeed * DeltaTime)).Rotator();
 	AddActorLocalRotation(DeltaRotation);
-	SetActorLocation(NuevaPos);
-	*/
-	//Flotación vertical
-	float OffsetZ = FMath::Abs(FMath::Sin(GetWorld()->GetTimeSeconds() * 25.f)) * 150.f;
+	// Flotación vertical
+	float OffsetZ = FMath::Abs(FMath::Sin(GetWorld()->GetTimeSeconds() * 2.f)) * 150.f;
 	FVector NuevaPos = PosicionInicial + FVector(0.f, 0.f, OffsetZ);
+	SetActorLocation(NuevaPos);
+
 }
 AActor* ABloqueHielo::Clonar(UWorld* Mundo, const FVector& Posicion) const
 {
